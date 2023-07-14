@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>理解MVVM</title>
+      <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+      <!--
+        05_MVVM模型:
+          M:Model,模型,用于存储数据:data中的数据
+          V:View,视图,用于展示数据:模版代码
+          VM:ViewModel,视图模型,用于连接视图和模型,实现数据的双向绑定:Vue实例
+          观察发现:
+            1.视图中的数据都是从视图模型中获取的
+            2.视图中的数据发生了改变,视图模型中的数据也会发生改变
+            3.视图模型中的数据发生了改变,视图中的数据也会发生改变
+      -->
+      <div id="root">
+        <h1>学校名称:{{name}}</h1>
+        <h1>学校地址:{{address}}</h1>
+      </div>
+    </body>
+  <script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        name: '程柯嘉',
+        address: '北京'
+      }
+    })
+
+    console.log(vm)
+  </script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>el与data的两种写法</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <!--
+        el与data的两种写法:
+            1.第一种写法:
+                el: "#root",
+                data: {
+                    name: '程柯嘉'
+                }
+            2.第二种写法:
+                data: function () {
+                    return {
+                        name: '程柯嘉'
+                    }
+                }
+                vm.$mount("#root")
+         -->
+        <div id="root">
+            <h1>你好,{{name}}</h1>
+        </div>
+    </body>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            //el: "#root", 第一种写法
+
+            //data的第一种写法:对象式
+            /*data: {
+              name: '程柯嘉'
+            }*/
+
+            //data的第二种写法,函数式
+            data: function () {
+                return {
+                    name: '程柯嘉'
+                }
+            }
+        })
+
+        console.log(vm)
+
+        vm.$mount("#root") //第二种写法
+    </script>
+</html>
