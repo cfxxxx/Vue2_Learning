@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>姓名案例</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            请输入姓: <input type="text" v-model="firstName">
+            <br><br>
+            请输入名: <input type="text" v-model="lastName">
+            <br><br>
+            姓名为: <span>{{showName(firstName, lastName)}}</span>
+        </div>
+    </body>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                firstName: '程',
+                lastName: '柯嘉'
+            },
+            methods: {
+                showName(firstName, lastName) {
+                    return firstName + '-' + lastName
+                }
+            }
+        })
+    </script>
+</html>
