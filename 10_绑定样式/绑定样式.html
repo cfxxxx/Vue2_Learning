@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>绑定样式</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+        <style>
+            .basic {
+                width: 400px;
+                height: 100px;
+                border: 1px solid black;
+            }
+            .happy {
+                background-color: orange;
+            }
+            .sad {
+                background-color: aliceblue;
+            }
+            .normal {
+                background-color: aquamarine;
+            }
+
+            .ckj1 {
+                border-radius: 5%;
+            }
+            .ckj2 {
+                background-color: crimson;
+            }
+            .ckj3 {
+                background-color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+            <!-- 绑定class样式 -- 字符串写法,适用于样式的类名不确定,需要动态指定 -->
+            <div class="basic" :class="mood" @click="changeMood">{{name}}</div>
+
+            <!-- 绑定class样式 -- 数组写法,适用于样式的类名不确定,个数也不确定 -->
+            <div class="basic" :class="list">{{name}}</div>
+
+            <!-- 绑定class样式 -- 对象写法,适用于样式的类名确定,个数确定,但要动态决定用不用 -->
+            <div class="basic" :class="chooseMood">{{name}}</div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '程柯嘉',
+                mood: 'normal',
+                list: ['ckj1', 'ckj2', 'ckj3'],
+                chooseMood: {
+                    ckj1: false,
+                    ckj2: false
+                }
+            },
+            methods: {
+                changeMood() {
+                    const list = ['happy', 'sad', 'normal']
+                    const num = Math.trunc((Math.random()*3))
+                    this.mood = list[num]
+                }
+            }
+        })
+    </script>
+</html>
