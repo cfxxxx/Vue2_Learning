@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>基本列表</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <!--
+            v-for指令:
+                1.用于展示列表数据
+                2.语法:v-for="(item, index) in list" :key="index"
+                3.可遍历:数组,对象,字符串(用得少),指定次数(用的很少)
+        -->
+        <div id="root">
+            <!-- 遍历数组 -->
+            <h2>人员列表(遍历数组)</h2>
+            <ul>
+                <li v-for="(person,index) in personList" :key="index">
+                    {{person.name}}-{{person.age}}
+                </li>
+            </ul>
+            <!-- 遍历对象 -->
+            <h2>汽车信息(遍历对象)</h2>
+            <ul>
+                <li v-for="(value, key) in car" :key="key">
+                    {{key}}-{{value}}
+                </li>
+            </ul>
+            <!-- 遍历字符串 -->
+            <h2>测试遍历字符串(用得少)</h2>
+            <ul>
+                <li v-for="(char, index) in str" :key="index">
+                    {{char}}-{{index}}
+                </li>
+            </ul>
+            <!-- 遍历指定次数 -->
+            <h2>测试遍历指定次数(用得少)</h2>
+            <ul>
+                <li v-for="(number, index) in 5" :key="index">
+                    {{number}}-{{index}}
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                personList: [
+                    {
+                        id: 1,
+                        name: '张三',
+                        age: 11
+                    },
+                    {
+                        id: 2,
+                        name: '李四',
+                        age: 18
+                    },
+                    {
+                        id: 3,
+                        name: '王五',
+                        age: 20
+                    }
+                ],
+                car: {
+                    name: '奥迪',
+                    prize: 10000
+                },
+                str: '程柯嘉'
+            }
+        })
+    </script>
+</html>
