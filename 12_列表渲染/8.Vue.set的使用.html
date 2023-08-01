@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue监测数据改变的原理</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h1>学校信息</h1>
+            <button @click="addProperty('school')">添加一个校长属性,默认值是小程</button>
+            <h2>学校名称: {{school.name}}</h2>
+            <h2>学校地址: {{school.address}}</h2>
+            <h2 v-show="school.leader">校长: {{school.leader}}</h2>
+            <hr>
+            <h1>学生信息</h1>
+            <button @click="addProperty('student')">添加一个性别属性,默认值是男</button>
+            <h2>学生姓名: {{student.name}}</h2>
+            <h2 v-show="student.sex">学生性别: {{student.sex}}</h2>
+            <h2>学生年龄: 真实{{student.age.rAge}}, 对外{{student.age.uAge}}</h2>
+            <h2>
+                朋友:
+                <ul>
+                    <li v-for="(friend, index) in student.friends" :key="index">
+                        {{friend.name}} : {{friend.age}}
+                    </li>
+                </ul>
+            </h2>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                school: {
+                    name: '华中农业大学',
+                    address: '狮子山'
+                },
+                student: {
+                    name: 'tom',
+                    age: {
+                        rAge: 40,
+                        uAge: 29
+                    },
+                    friends: [
+                        {name: 'Jerry', age: 35},
+                        {name: 'Tony', age: 34}
+                    ]
+                }
+            },
+            methods: {
+                addProperty(str) {
+                    if (str === 'student'){
+                        Vue.set(this.student, 'sex', '男')
+                    } else {
+                        Vue.set(this.school, 'leader', '小程')
+                    }
+                }
+            }
+        })
+    </script>
+</html>
